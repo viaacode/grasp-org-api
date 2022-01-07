@@ -1,0 +1,20 @@
+version: "3.9"
+
+networks:
+  sparql:
+    driver: bridge
+services:
+  grasp:
+    build: https://github.com/viaacode/grasp.git
+    image: grasp-latest
+    environment:
+      - RESOURCES_DIR=/grasp/resources
+      - SERVICES_FILE=/grasp/services.json
+      - MAX_BATCH_SIZE=50
+    ports:
+      - "4000:4000"
+    volumes:
+      - "$PWD/resources:/grasp/resources"
+      - "$PWD/services.json:/grasp/services.json"
+    networks:
+      - sparql
