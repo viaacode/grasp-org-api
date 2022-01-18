@@ -8,6 +8,7 @@ CONSTRUCT {
   :alt_label  ?alt_label ;                                               
 }
 FROM <https://data.meemoo.be/graphs/organizations>
+FROM <https://data.meemoo.be/graphs/organizations/types>
 WHERE
 {
   { ?iri a skos:Concept }

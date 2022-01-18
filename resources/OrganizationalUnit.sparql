@@ -28,6 +28,7 @@ CONSTRUCT {
   :unit_of ?org
 }
 FROM <https://data.meemoo.be/graphs/organizations>
+FROM <https://data.meemoo.be/graphs/organizations/types>
 WHERE
 {
   { ?iri a org:OrganizationalUnit; schema:identifier ?id; org:hasPost ?unitOf }

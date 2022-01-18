@@ -27,6 +27,7 @@ CONSTRUCT {
   :posts ?post;  
 }
 FROM <https://data.meemoo.be/graphs/organizations>
+FROM <https://data.meemoo.be/graphs/organizations/types>
 WHERE
 {
   { ?iri a meemoo:School; schema:identifier ?id }
