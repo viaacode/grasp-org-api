@@ -57,8 +57,8 @@ pipeline {
                     script {
                         sh '''#!/bin/bash
                         oc project metadata-mgm
-                        cd graphql/organizations-api/
-                        oc create configmap --from-file=. organizations-api-${GIT_SHORT_COMMIT} || echo "configmap exists for version: ${VERSION} update version to create updates"
+                        cd resources
+                        oc create configmap --from-file=. organizations-api-${GIT_SHORT_COMMIT} || echo "configmap exists for version: ${GIT_SHORT_COMMIT} update version to create updates"
                         '''
                     }
                   }
