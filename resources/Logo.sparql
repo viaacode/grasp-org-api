@@ -8,7 +8,7 @@ CONSTRUCT {
   ?iri :iri   ?iri;
   :type ?concept                                        
 }
-FROM <https://data.meemoo.be/graphs/organizations>
+FROM <https://data.hetarchief.be/graph/organizations>
 WHERE
 {
   { ?x schema:logo ?iri }

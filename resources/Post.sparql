@@ -8,7 +8,7 @@ CONSTRUCT {
   :post_in    ?org;
     :role    ?role;
 }
-FROM <https://data.meemoo.be/graphs/organizations>
+FROM <https://data.hetarchief.be/graph/organizations>
 WHERE
 {
   { ?iri a org:Post; org:postIn ?org }

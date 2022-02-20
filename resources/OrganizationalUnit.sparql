@@ -27,8 +27,8 @@ CONSTRUCT {
   :posts ?post;
   :unit_of ?org
 }
-FROM <https://data.meemoo.be/graphs/organizations>
-FROM <https://data.meemoo.be/graphs/organizations/types>
+FROM <https://data.hetarchief.be/graph/organizations>
+FROM <https://data.hetarchief.be/graph/organizations/schema>
 WHERE
 {
   { ?iri a org:OrganizationalUnit; schema:identifier ?id; org:hasPost ?unitOf }

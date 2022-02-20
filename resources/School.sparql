@@ -26,8 +26,8 @@ CONSTRUCT {
   :sites ?site;                                  
   :posts ?post;  
 }
-FROM <https://data.meemoo.be/graphs/organizations>
-FROM <https://data.meemoo.be/graphs/organizations/types>
+FROM <https://data.hetarchief.be/graph/organizations>
+FROM <https://data.hetarchief.be/graph/organizations/schema>
 WHERE
 {
   { ?iri a meemoo:School; schema:identifier ?id }

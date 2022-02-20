@@ -10,15 +10,17 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 CONSTRUCT {
   ?iri :iri   ?iri;
   :given_name ?given_name;
+  :telephone ?telephone;
   :family_name ?family_name;
   :email ?email;
   :holds ?post;
   :account_manager_of ?am                                            
 }
-FROM <https://data.meemoo.be/graphs/organizations>
+FROM <https://data.hetarchief.be/graph/organizations>
 WHERE
 {
   { ?iri a schema:Person }
+  OPTIONAL { ?iri schema:telephone ?telephone }
   OPTIONAL { ?iri schema:givenName ?given_name }
   OPTIONAL { ?iri schema:familyName ?family_name }
   OPTIONAL { ?iri schema:email ?email }
