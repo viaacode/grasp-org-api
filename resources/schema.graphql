@@ -127,6 +127,7 @@ type Person @grasp(endpoint: "meemoo", sparql: "Person.sparql") {
   iri: ID!
   given_name: String
   family_name: String
+  telephone: String
   email: String
   holds: [Post]
   account_manager_of: [Organization]

@@ -2,10 +2,10 @@ PREFIX : <https://github.com/dbcls/grasp/ns/>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX meemoo: <https://meemoo.be/ns/org#>
+PREFIX meemoo: <https://data.hetarchief.be/ns/organisatie#>
 PREFIX schema: <https://schema.org/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX mh:  <https://meemoo.be/ns/mh#> 
+PREFIX mh:  <https://data.hetarchief.be/ns/mediahaven#> 
 
 CONSTRUCT {
   ?iri :iri   ?iri;
@@ -27,8 +27,8 @@ CONSTRUCT {
   :posts ?post;
   :unit_of ?org
 }
-FROM <https://data.meemoo.be/graphs/organizations>
-FROM <https://data.meemoo.be/graphs/organizations/types>
+FROM <https://data.hetarchief.be/graph/organizations>
+FROM <https://data.hetarchief.be/graph/organizations/schema>
 WHERE
 {
   { ?iri a org:OrganizationalUnit; schema:identifier ?id; org:hasPost ?unitOf }
