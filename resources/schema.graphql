@@ -19,7 +19,7 @@ interface IOrganization {
   overlay: Boolean
   bzt: Boolean
   account_manager: Person
-  classification(label: String): Concept
+  classification: Concept
   units: [OrganizationalUnit]
   contact_point: [ContactPoint]
   primary_site: Site
@@ -170,4 +170,6 @@ type Concept @grasp(endpoint: "meemoo", sparql: "Concept.sparql") {
   iri: ID!
   label: String
   alt_label: String
+  broader: Concept
+  narrower: Concept
 }
