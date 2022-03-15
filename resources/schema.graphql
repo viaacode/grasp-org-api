@@ -40,7 +40,7 @@ type Organization implements IOrganization
   overlay: Boolean
   bzt: Boolean
   account_manager: Person
-  classification(label: String): Concept
+  classification: Concept
   units: [OrganizationalUnit]
   contact_point: [ContactPoint]
   primary_site: Site
@@ -61,7 +61,7 @@ type School implements IOrganization
   overlay: Boolean
   bzt: Boolean
   account_manager: Person
-  classification(label: String): Concept
+  classification: Concept
   units: [OrganizationalUnit]
   contact_point: [ContactPoint]
   primary_site: Site
@@ -82,7 +82,7 @@ type ContentPartner implements IOrganization
   overlay: Boolean
   bzt: Boolean
   account_manager: Person
-  classification(label: String): Concept
+  classification: Concept
   units: [OrganizationalUnit]
   contact_point: [ContactPoint]
   primary_site: Site
@@ -103,7 +103,7 @@ type OrganizationalUnit implements IOrganization
   overlay: Boolean
   bzt: Boolean
   account_manager: Person
-  classification(label: String): Concept
+  classification: Concept
   units: [OrganizationalUnit]
   contact_point: [ContactPoint]
   primary_site: Site

@@ -25,6 +25,4 @@ WHERE
   {{#if iri}}
   VALUES ?iri { {{join " " (as-iriref iri)}} }
   {{/if}}
-
-
 }
