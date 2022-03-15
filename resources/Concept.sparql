@@ -5,7 +5,9 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 CONSTRUCT {
   ?iri :iri   ?iri;
   :label      ?label;
-  :alt_label  ?alt_label ;                                               
+  :alt_label  ?alt_label ; 
+  :broader ?broader;
+  :narrower ?narrower                                              
 }
 FROM <https://data.hetarchief.be/graph/organizations>
 FROM <https://data.hetarchief.be/graph/organizations/schema>
@@ -15,10 +17,14 @@ WHERE
   UNION
   { ?iri a org:Role }
   
-  OPTIONAL { ?iri skos:prefLabel ?label }
+  OPTIONAL { ?iri skos:prefLabel ?label .}
   OPTIONAL { ?iri skos:altLabel ?alt_label }
+  OPTIONAL { ?iri skos:broader ?broader }
+  OPTIONAL { ?iri skos:narrower ?narrower }
   
   {{#if iri}}
   VALUES ?iri { {{join " " (as-iriref iri)}} }
   {{/if}}
+
+
 }
