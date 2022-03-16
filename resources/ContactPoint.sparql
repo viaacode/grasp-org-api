@@ -14,7 +14,7 @@ CONSTRUCT {
 FROM <https://data.hetarchief.be/graph/organizations>
 WHERE
 {
-  { ?iri a schema:PostalAddress }
+  { ?iri a schema:ContactPoint }
   OPTIONAL { ?iri schema:contactType ?contact_type }
   OPTIONAL { ?iri schema:email ?email }
   OPTIONAL { ?iri schema:telephone ?telephone }
