@@ -1,12 +1,39 @@
 directive @grasp(endpoint: String, sparql: String) on OBJECT
 
 type Query {
-  organizations(iri: String, id: String): [Organization]
-  schools(iri: String, id: String): [School]
-  contentpartners(iri: String, id: String): [ContentPartner]
-  persons(iri: String, given_name: String, family_name: String): [Person]
+  "Retrieve data about all organizations."
+  organizations(
+    "The persistent meemoo URI of the organization."
+    iri: String, 
+    "The persistent identifier of the organization."
+    id: String
+  ): [Organization]
+  "Retrieve data about schools known to meemoo."
+  schools(
+    "The persistent meemoo URI of the school."
+    iri: String, 
+    "The school ID of the school."
+    id: String
+  ): [School]
+  "Retrieve data about contentpartners of meemoo."
+  contentpartners(
+    "The persistent meemoo URI of the contentpartner."
+    iri: String, 
+    "The persistent meemoo identifier of the contentpartner."
+    id: String
+  ): [ContentPartner]
+  "Retrieve data about personnel or persons known to meemoo."
+  persons(
+    "The persistent meemoo URI of the person."
+    iri: String,
+    "The first name of the person."
+    given_name: String, 
+    "The last name of the person."
+    family_name: String
+  ): [Person]
 }
 
+"Interface for all organizations."
 interface IOrganization {
   iri: ID!
   id: String!
