@@ -42,7 +42,7 @@ WHERE
   OPTIONAL { ?iri meemoo:hasAccountManager ?account_manager }
   OPTIONAL { ?iri org:classification ?classification }
   OPTIONAL { ?iri org:hasUnit ?unit }
-  OPTIONAL { ?iri schema:contactPoint ?contact }
+  OPTIONAL { ?iri schema:contactPoint ?contact_point }
   OPTIONAL { ?iri org:hasPrimarySite ?primary_site }
   OPTIONAL { ?iri org:hasSite ?site }
   OPTIONAL { ?iri org:hasPost ?post }
