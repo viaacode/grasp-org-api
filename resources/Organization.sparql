@@ -17,7 +17,8 @@ CONSTRUCT {
   :description ?description;                            
   :logo         ?logo;                                   
   :overlay      ?overlay;
-  :bzt      ?bzt;                               
+  :bzt      ?bzt;       
+  :form_url      ?form_url;                          
   :account_manager ?account_manager;                         
   :classification   ?classification;
   :units     ?unit;                
@@ -39,6 +40,7 @@ WHERE
   OPTIONAL { ?iri schema:logo ?logo }
   OPTIONAL { ?iri meemoo:allowsOverlay ?overlay }
   OPTIONAL { ?iri meemoo:allowsBZT ?bzt }
+  OPTIONAL { ?iri meemoo:requestForm ?form_url } 
   OPTIONAL { ?iri meemoo:hasAccountManager ?account_manager }
   OPTIONAL { ?iri org:classification ?classification }
   OPTIONAL { ?iri org:hasUnit ?unit }
