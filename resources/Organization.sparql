@@ -31,7 +31,28 @@ FROM <https://data.hetarchief.be/graph/organizations>
 FROM <https://data.hetarchief.be/graph/organizations/schema>
 WHERE
 {
-  { ?iri a org:Organization; schema:identifier ?id }
+  { 
+    SELECT ?iri ?id 
+    WHERE {
+      ?iri a org:Organization; 
+          schema:identifier ?id .
+      
+      {{#if id}}
+      ?iri schema:identifier "{{id}}" .
+      {{/if}}
+
+      {{#if iri}}
+      VALUES ?iri { {{join " " (as-iriref iri)}} }
+      {{/if}}
+    }
+    {{#if offset includeZero=true}}
+    ORDER BY ASC(?iri)
+    OFFSET {{offset}}
+    {{/if}}
+    {{#if limit includeZero=true}}
+    LIMIT {{limit}}
+    {{/if}}
+  }
   OPTIONAL { ?iri skos:prefLabel ?label }
   OPTIONAL { ?iri skos:altLabel ?alt_label }
   OPTIONAL { ?iri mh:label ?mam_label }
@@ -48,13 +69,4 @@ WHERE
   OPTIONAL { ?iri org:hasPrimarySite ?primary_site }
   OPTIONAL { ?iri org:hasSite ?site }
   OPTIONAL { ?iri org:hasPost ?post }
-
-
-  {{#if iri}}
-  VALUES ?iri { {{join " " (as-iriref iri)}} }
-  {{/if}}
-
-  {{#if id}}
-    ?iri schema:identifier "{{id}}" .
-  {{/if}}
 }
