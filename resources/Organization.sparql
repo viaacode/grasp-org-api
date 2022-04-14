@@ -21,6 +21,7 @@ CONSTRUCT {
   :form_url      ?form_url;                          
   :account_manager ?account_manager;                         
   :classification   ?classification;
+  :sector ?sector;
   :units     ?unit;                
   :contact_point ?contact_point;                    
   :primary_site  ?primary_site;                          
@@ -62,6 +63,7 @@ WHERE
   OPTIONAL { ?iri meemoo:allowsOverlay ?overlay }
   OPTIONAL { ?iri meemoo:allowsBZT ?bzt }
   OPTIONAL { ?iri meemoo:requestForm ?form_url } 
+  OPTIONAL { ?iri meemoo:sector ?sector } 
   OPTIONAL { ?iri meemoo:hasAccountManager ?account_manager }
   OPTIONAL { ?iri org:classification ?classification }
   OPTIONAL { ?iri org:hasUnit ?unit }
