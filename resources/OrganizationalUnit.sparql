@@ -32,7 +32,7 @@ FROM <https://data.hetarchief.be/graph/organizations>
 FROM <https://data.hetarchief.be/graph/organizations/schema>
 WHERE
 {
-  { ?iri a org:OrganizationalUnit; schema:identifier ?id; org:hasPost ?unitOf }
+  { ?iri a org:OrganizationalUnit; schema:identifier ?id; org:unitOf ?org }
   OPTIONAL { ?iri skos:prefLabel ?label }
   OPTIONAL { ?iri skos:altLabel ?alt_label }
   OPTIONAL { ?iri meemoo:mam_label ?mam_label }

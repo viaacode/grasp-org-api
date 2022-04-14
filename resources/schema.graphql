@@ -157,7 +157,7 @@ type OrganizationalUnit implements IOrganization
   primary_site: Site
   sites: [Site]
   posts: [Post]
-  unit_of: Organization!
+  unit_of: IOrganization!
 }
 
 type Post @grasp(endpoint: "meemoo", sparql: "Post.sparql") {
