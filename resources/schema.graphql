@@ -62,6 +62,7 @@ interface IOrganization {
   overlay: Boolean
   bzt: Boolean
   form_url: String
+  sector: String
   account_manager: Person
   classification: Concept
   units: [OrganizationalUnit]
@@ -84,6 +85,7 @@ type Organization implements IOrganization
   overlay: Boolean
   bzt: Boolean
   form_url: String
+  sector: String
   account_manager: Person
   classification: Concept
   units: [OrganizationalUnit]
@@ -106,6 +108,7 @@ type School implements IOrganization
   overlay: Boolean
   bzt: Boolean
   form_url: String
+  sector: String
   account_manager: Person
   classification: Concept
   units: [OrganizationalUnit]
@@ -128,6 +131,7 @@ type ContentPartner implements IOrganization
   overlay: Boolean
   bzt: Boolean
   form_url: String
+  sector: String
   account_manager: Person
   classification: Concept
   units: [OrganizationalUnit]
@@ -150,6 +154,7 @@ type OrganizationalUnit implements IOrganization
   overlay: Boolean
   bzt: Boolean
   form_url: String
+  sector: String
   account_manager: Person
   classification: Concept
   units: [OrganizationalUnit]
