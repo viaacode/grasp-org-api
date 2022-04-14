@@ -1,0 +1,9 @@
+{
+    "meemoo": {
+        "type": "SPARQLEndpointService",
+        "url": "<http://.../meemoo/query>",
+        "graph": "https://data.meemoo.be/graphs/organizations",
+        "user": "user",
+        "password": "password"
+    }
+}
