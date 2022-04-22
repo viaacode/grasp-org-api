@@ -27,6 +27,7 @@ CONSTRUCT {
   :primary_site  ?primary_site;                          
   :sites ?site;                                  
   :posts ?post;  
+  :category ?cat.
 }
 FROM <https://data.hetarchief.be/graph/organizations>
 FROM <https://data.hetarchief.be/graph/organizations/schema>
@@ -71,4 +72,12 @@ WHERE
   OPTIONAL { ?iri org:hasPrimarySite ?primary_site }
   OPTIONAL { ?iri org:hasSite ?site }
   OPTIONAL { ?iri org:hasPost ?post }
+  
+  # add category
+  BIND (
+    IF(EXISTS { ?iri a meemoo:ContentPartner }, "Content Partner", 
+      IF(EXISTS { ?iri a meemoo:ServiceProvider }, "Service Provider", 
+      IF(EXISTS { ?iri a meemoo:ServiceConsumer }, "Customer", ?x)
+    )) AS ?cat)
+
 }

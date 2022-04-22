@@ -93,6 +93,7 @@ type Organization implements IOrganization
   primary_site: Site
   sites: [Site]
   posts: [Post]
+  category: String
 }
 
 type School implements IOrganization
