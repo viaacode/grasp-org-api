@@ -38,6 +38,8 @@ WHERE
     WHERE {
       ?iri a org:Organization; 
           schema:identifier ?id .
+      # Only OR ids
+      FILTER strStarts(?id, "OR-")
       
       {{#if id}}
       ?iri schema:identifier "{{id}}" .
