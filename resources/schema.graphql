@@ -51,180 +51,324 @@ type Query {
 
 "Interface for all organizations."
 interface IOrganization {
+  "The persistent meemoo URI of the organization."
   iri: ID!
+  "The persistent identifier of the organization."
   id: String!
+  "The label of the organization."
   label: String
+  "The alternative label of the organization."
   alt_label: String
+  "The tenant name of the organization in the meemoo MAM."
   mam_label: String
+  "The website of the organization."
   homepage: String
+  "The description of the organization (in Dutch)."
   description: String
+  "The logo of the organization."
   logo: Logo
+  "A flag indicating whether the organization allows media overlays."
   overlay: Boolean
+  "A flag indicating whether the organization allows content to be included in meemoo's Bezoekertool."
   bzt: Boolean
+  "The URL to a request content from the organization."
   form_url: String
+  "The sector the organization in active in."
   sector: String
+  "The account manager at meemoo responsible for this organization."
   account_manager: Person
+  "The organization type."
   classification: Concept
+  "The units belonging to this organization."
   units: [OrganizationalUnit]
+  "The points of contact in this organizaton."
   contact_point: [ContactPoint]
+  "The primary physical site of the organization."
   primary_site: Site
+  "The physical sites of the organization."
   sites: [Site]
+  "The known jobpositions at the organization, eg. technical manager, project manager, accountant etc."
   posts: [Post]
 }
 
+"A generic organization."
 type Organization implements IOrganization
   @grasp(endpoint: "meemoo", sparql: "Organization.sparql") {
+  "The persistent meemoo URI of the organization."
   iri: ID!
+  "The persistent identifier of the organization."
   id: String!
+  "The label of the organization."
   label: String
+  "The alternative label of the organization."
   alt_label: String
+  "The tenant name of the organization in the meemoo MAM."
   mam_label: String
+  "The website of the organization."
   homepage: String
+  "The description of the organization (in Dutch)."
   description: String
+  "The logo of the organization."
   logo: Logo
+  "A flag indicating whether the organization allows media overlays."
   overlay: Boolean
+  "A flag indicating whether the organization allows content to be included in meemoo's Bezoekertool."
   bzt: Boolean
+  "The URL to a request content from the organization."
   form_url: String
+  "The sector the organization in active in."
   sector: String
+  "The account manager at meemoo responsible for this organization."
   account_manager: Person
+  "The organization type."
   classification: Concept
+  "The units belonging to this organization."
   units: [OrganizationalUnit]
+  "The points of contact in this organizaton."
   contact_point: [ContactPoint]
+  "The primary physical site of the organization."
   primary_site: Site
+  "The physical sites of the organization."
   sites: [Site]
+  "The known jobpositions at the organization, eg. technical manager, project manager, accountant etc."
   posts: [Post]
+  "The meemoo category of the organization."
   category: String
 }
 
+"A school."
 type School implements IOrganization
   @grasp(endpoint: "meemoo", sparql: "School.sparql") {
+  "The persistent meemoo URI of the school."
   iri: ID!
+  "The school ID of the school."
   id: String!
+  "The label of the school."
   label: String
+  "The alternative label of the school."
   alt_label: String
+  "The tenant name of the school in the meemoo MAM."
   mam_label: String
+  "The website of the school."
   homepage: String
+  "The description of the school (in Dutch)."
   description: String
+  "The logo of the school."
   logo: Logo
+  "A flag indicating whether the school allows media overlays."
   overlay: Boolean
+  "A flag indicating whether the school allows content to be included in meemoo's Bezoekertool."
   bzt: Boolean
+  "The URL to a request content from the school."
   form_url: String
+  "The sector the school in active in."
   sector: String
+  "The account manager at meemoo responsible for this school."
   account_manager: Person
+  "The school type."
   classification: Concept
+  "The units belonging to this school."
   units: [OrganizationalUnit]
+  "The points of contact in this organizaton."
   contact_point: [ContactPoint]
+  "The primary physical site of the school."
   primary_site: Site
+  "The physical sites of the school."
   sites: [Site]
+  "The known jobpositions at the school, eg. english teacher, director, etc."
   posts: [Post]
 }
 
+"A meemoo content partner."
 type ContentPartner implements IOrganization
   @grasp(endpoint: "meemoo", sparql: "ContentPartner.sparql") {
+  "The persistent meemoo URI of the content partner."
   iri: ID!
+  "The persistent identifier of the content partner."
   id: String!
+  "The label of the content partner."
   label: String
+  "The alternative label of the content partner."
   alt_label: String
+  "The tenant name of the content partner in the meemoo MAM."
   mam_label: String
+  "The website of the content partner."
   homepage: String
+  "The description of the content partner (in Dutch)."
   description: String
+  "The logo of the content partner."
   logo: Logo
+  "A flag indicating whether the content partner allows media overlays."
   overlay: Boolean
+  "A flag indicating whether the content partner allows content to be included in meemoo's Bezoekertool."
   bzt: Boolean
+  "The URL to a request content from the content partner."
   form_url: String
+  "The sector the content partner in active in."
   sector: String
+  "The account manager at meemoo responsible for this content partner."
   account_manager: Person
+  "The content partner type."
   classification: Concept
+  "The units belonging to this content partner."
   units: [OrganizationalUnit]
+  "The points of contact in this organizaton."
   contact_point: [ContactPoint]
+  "The primary physical site of the content partner."
   primary_site: Site
+  "The physical sites of the content partner."
   sites: [Site]
+  "The known jobpositions at the content partner, eg. technical manager, project manager, accountant etc."
   posts: [Post]
 }
 
+"A unit of an organization."
 type OrganizationalUnit implements IOrganization
   @grasp(endpoint: "meemoo", sparql: "OrganizationalUnit.sparql") {
+  "The persistent meemoo URI of the unit."
   iri: ID!
+  "The persistent identifier of the unit."
   id: String!
+  "The label of the unit."
   label: String
+  "The alternative label of the unit."
   alt_label: String
+  "The tenant name of the unit in the meemoo MAM."
   mam_label: String
+  "The website of the unit."
   homepage: String
+  "The description of the unit (in Dutch)."
   description: String
+  "The logo of the unit."
   logo: Logo
+  "A flag indicating whether the unit allows media overlays."
   overlay: Boolean
+  "A flag indicating whether the unit allows content to be included in meemoo's Bezoekertool."
   bzt: Boolean
+  "The URL to a request content from the unit."
   form_url: String
+  "The sector the unit in active in."
   sector: String
+  "The account manager at meemoo responsible for this unit."
   account_manager: Person
+  "The unit type."
   classification: Concept
+  "The units belonging to this unit."
   units: [OrganizationalUnit]
+  "The points of contact in this organizaton."
   contact_point: [ContactPoint]
+  "The primary physical site of the unit."
   primary_site: Site
+  "The physical sites of the unit."
   sites: [Site]
+  "The known jobpositions at the unit, eg. technical manager, project manager, accountant etc."
   posts: [Post]
+  "The unit that this unit is part of."
   unit_of: IOrganization!
 }
 
+"A position some person has at an organization."
 type Post @grasp(endpoint: "meemoo", sparql: "Post.sparql") {
+  "The persistent meemoo URI."
   iri: ID!
+  "The role that this position fills, eg. manager, technical analyst, accountant, etc."
   role: Concept
+  "The organization that this post is at."
   post_in: [Organization]!
 }
 
+"A logo."
 type Logo @grasp(endpoint: "meemoo", sparql: "Logo.sparql") {
+  "The persistent URL of the logo."
   iri: ID!
+  "The type of logo, eg. monochrome, color, negative, etc."
   type: Concept
 }
 
+"A person."
 type Person @grasp(endpoint: "meemoo", sparql: "Person.sparql") {
+  "The persistent meemoo URI of the person."
   iri: ID!
+  "The given or first name of the person."
   given_name: String
+  "The family or last name of the person."
   family_name: String
+  "The telephone number of the person."
   telephone: String
+  "The email address of the person."
   email: String
+  "The posts or positions that this person holds."
   holds: [Post]
+  "The organizations that this person is account manager of."
   account_manager_of: [Organization]
 }
 
+"A physical site of an organzation."
 type Site @grasp(endpoint: "meemoo", sparql: "Site.sparql") {
+  "The persistent meemoo URI of the site."
   iri: ID!
+  "The address of the site."
   address: PostalAddress
 }
 
 interface IContactPoint {
+  "The persistent meemoo URI of the contact point."
   iri: ID!
+  "The type of contact, eg. primary, financial, delivery, etc."
   contact_type: String
+  "The contact's email address."
   email: String
+  "The contact's telephone number."
   telephone: String
 }
 
+"A contact point."
 type ContactPoint implements IContactPoint
   @grasp(endpoint: "meemoo", sparql: "ContactPoint.sparql") {
+  "The persistent meemoo URI of the contact point."
   iri: ID!
+  "The type of contact, eg. primary, financial, delivery, etc."
   contact_type: String
+  "The contact's email address."
   email: String
+  "The contact's telephone number."
   telephone: String
 }
 
+"A postal address."
 type PostalAddress implements IContactPoint
   @grasp(endpoint: "meemoo", sparql: "PostalAddress.sparql") {
+  "The persistent meemoo URI of the address."
   iri: ID!
+  "The type of address, eg. primary, financial, delivery, etc."
   contact_type: String
+  "The email address."
   email: String
+  "The telephone number to reach the address."
   telephone: String
+  "The country the address is located in."
   country: String
+  "The city the address is located in."
   locality: String
+  "The region the address is located in."
   region: String
+  "The box number of the address."
   post_office_box_number: String
+  "The postal code of the address."
   postal_code: String
+  "The street and number of the address."
   street: String
 }
 
+"A taxonomy concept."
 type Concept @grasp(endpoint: "meemoo", sparql: "Concept.sparql") {
   iri: ID!
+  "The concept label."
   label: String
+  "The concept's alternative label."
   alt_label: String
-  broader: Concept
-  narrower: Concept
+  "Any parent concept."
+  broader: [Concept]
+  "Any child concepts."
+  narrower: [Concept]
 }
