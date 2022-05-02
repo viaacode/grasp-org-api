@@ -31,7 +31,6 @@ pipeline {
         OC_URL = 'https://c113-e.private.eu-de.containers.cloud.ibm.com:30227'
         JIRA_URL = 'meemoo.atlassian.net'
         APP_NAME = 'grasp'
-        BRANCH_NAME= 'main'
     }
 
     stages {
@@ -118,6 +117,7 @@ pipeline {
                 container('oc') {
                  script {
                   sh '''#!/bin/bash
+                    oc project metadata-mgm
                     oc set volumes deployment/grasp-prd --add --overwrite=true --name=org-api --mount-path=/app/organizations-api -t configmap --configmap-name=organizations-api-${GIT_SHORT_COMMIT}
                   '''
                 }
@@ -125,10 +125,6 @@ pipeline {
             }//end setps
             post {
                 always {
-                    script {
-                        previous_tag = sh(script: 'git describe --abbrev=0 --tags `git rev-list --tags --skip=1 --max-count=1`', returnStdout: true).trim()
-                        echo getAllCommitsBetweenTags(previous_tag, env.TAG_NAME)
-                    }
                     jiraSendDeploymentInfo site: "${JIRA_URL}", environmentId: 'prd', environmentName: 'prd', environmentType: 'production'
                 }
             }
