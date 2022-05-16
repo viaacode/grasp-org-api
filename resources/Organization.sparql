@@ -18,7 +18,7 @@ CONSTRUCT {
   :logo         ?logo;                                   
   :overlay      ?overlay;
   :bzt      ?bzt;       
-  :form_url      ?form_url;                          
+  :form_url      ?fixed_form_url;                          
   :account_manager ?account_manager;                         
   :classification   ?classification;
   :sector ?sector;
@@ -74,6 +74,9 @@ WHERE
   OPTIONAL { ?iri org:hasPrimarySite ?primary_site }
   OPTIONAL { ?iri org:hasSite ?site }
   OPTIONAL { ?iri org:hasPost ?post }
+
+  # fix form_url
+  BIND (REPLACE(?form_url,"\\\\_","_") AS ?fixed_form_url)
   
   # add category
   BIND (
