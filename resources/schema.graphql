@@ -10,7 +10,9 @@ type Query {
     "The specified number of results after which it should start generating results."
     offset: Int,
     "The upper bound on the number of solutions returned."
-    limit: Int
+    limit: Int,
+    "A simple search by organization label."
+    label: String
   ): [Organization]
   "Retrieve data about schools known to meemoo."
   schools(
