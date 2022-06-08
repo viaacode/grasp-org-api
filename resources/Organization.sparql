@@ -48,6 +48,12 @@ WHERE
       {{#if iri}}
       VALUES ?iri { {{join " " (as-iriref iri)}} }
       {{/if}}
+
+      # label filter
+      {{#if label}}
+      ?iri skos:prefLabel ?label .
+      FILTER (contains(lcase(str(?label)), lcase({{as-string label}})))
+      {{/if}}
     }
     {{#if offset includeZero=true}}
     ORDER BY ASC(?iri)
@@ -74,11 +80,6 @@ WHERE
   OPTIONAL { ?iri org:hasPrimarySite ?primary_site }
   OPTIONAL { ?iri org:hasSite ?site }
   OPTIONAL { ?iri org:hasPost ?post }
-
-  # label filter
-  {{#if label}}
-  FILTER (contains(lcase(str(?label)), lcase({{as-string label}})))
-  {{/if}}
 
   # fix form_url
   BIND (REPLACE(?form_url,"\\\\_","_") AS ?fixed_form_url)
