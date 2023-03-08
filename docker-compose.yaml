@@ -11,6 +11,7 @@ services:
       - RESOURCES_DIR=/grasp/resources
       - SERVICES_FILE=/grasp/services.json
       - MAX_BATCH_SIZE=50
+      - LOG_LEVEL=debug
     ports:
       - "4000:4000"
     volumes:
