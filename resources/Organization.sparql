@@ -36,8 +36,12 @@ WHERE
   { 
     SELECT ?iri ?id 
     WHERE {
-      ?iri a org:Organization; 
-          schema:identifier ?id .
+      {{#if type}}
+        ?iri rdf:type/rdfs:subClassOf* meemoo:{{type}} .
+      {{else}}
+        ?iri a org:Organization .
+      {{/if}}
+      ?iri schema:identifier ?id .
       # Only OR ids
       FILTER strStarts(?id, "OR-")
       

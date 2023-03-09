@@ -1,5 +1,15 @@
 directive @grasp(endpoint: String, sparql: String) on OBJECT
 
+enum OrgType {
+  ContentPartner
+  ServiceProvider
+  ServiceConsumer
+  School
+  EducationalPartner
+  EducationalOrganization
+  EducationalPublisher
+}
+
 type Query {
   "Retrieve data about all organizations."
   organizations(
@@ -12,7 +22,9 @@ type Query {
     "The upper bound on the number of solutions returned."
     limit: Int,
     "A simple search by organization label."
-    label: String
+    label: String,
+    "Only return a specific type of organization. The results also include instances of subtypes."
+    type: OrgType
   ): [Organization]
   "Retrieve data about schools known to meemoo."
   schools(
