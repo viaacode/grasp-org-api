@@ -12,7 +12,8 @@ CONSTRUCT {
   :id         ?id;
   :label      ?label;
   :alt_label  ?alt_label ;                                               
-  :mam_label  ?mam_label;                           
+  :mam_label  ?mam_label;
+  :slug ?slug;                           
   :homepage   ?homepage;                             
   :description ?description;                            
   :logo         ?logo;                                   
@@ -95,4 +96,18 @@ WHERE
       IF(EXISTS { ?iri a meemoo:ServiceConsumer }, "Customer", ?x)
     )) AS ?cat)
 
+  # create slug
+  BIND(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+  REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(lcase(?label), 
+  "[àáâãäåæ]", "a", "i"),
+  "[èéêë]", "e", "i"),
+  "[ìíîï]", "i", "i"),
+  "[òóôõöœø]", "o", "i"),
+  "[ùúûü]", "u", "i"),
+  "[ñ]", "n", "i"),
+  "[ç]", "c", "i"),
+  "[ß]", "s", "i"),
+  "[ÌÍÎÏÈÉÊËÒÓÔÕÖŒÙÚÛÜÑÇ]", "", "i"),
+  "[^a-z0-9]+", "-", "i"),
+  "^-|-$", "", "i") AS ?slug)
 }

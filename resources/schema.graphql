@@ -75,6 +75,8 @@ interface IOrganization {
   alt_label: String
   "The tenant name of the organization in the meemoo MAM."
   mam_label: String
+  "A slugified version of the label to create in an URL."
+  slug: String
   "The website of the organization."
   homepage: String
   "The description of the organization (in Dutch)."
@@ -118,6 +120,8 @@ type Organization implements IOrganization
   alt_label: String
   "The tenant name of the organization in the meemoo MAM."
   mam_label: String
+  "A slugified version of the label to create in an URL."
+  slug: String
   "The website of the organization."
   homepage: String
   "The description of the organization (in Dutch)."
@@ -163,6 +167,8 @@ type School implements IOrganization
   alt_label: String
   "The tenant name of the school in the meemoo MAM."
   mam_label: String
+  "A slugified version of the label to create in an URL."
+  slug: String
   "The website of the school."
   homepage: String
   "The description of the school (in Dutch)."
@@ -206,6 +212,8 @@ type ContentPartner implements IOrganization
   alt_label: String
   "The tenant name of the content partner in the meemoo MAM."
   mam_label: String
+  "A slugified version of the label to create in an URL."
+  slug: String
   "The website of the content partner."
   homepage: String
   "The description of the content partner (in Dutch)."
@@ -249,6 +257,8 @@ type OrganizationalUnit implements IOrganization
   alt_label: String
   "The tenant name of the unit in the meemoo MAM."
   mam_label: String
+  "A slugified version of the label to create in an URL."
+  slug: String
   "The website of the unit."
   homepage: String
   "The description of the unit (in Dutch)."
