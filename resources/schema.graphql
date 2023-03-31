@@ -10,23 +10,6 @@ enum OrgType {
   EducationalPublisher
 }
 
-# SLug
-# - spatie wordt dash
-
-  # BIND(lcase(?label) AS ?lowercase)
-  # BIND(REPLACE(?lowercase, "[àáâãäåæ]", "a", "i") AS ?slug1)
-  # BIND(REPLACE(?slug1, "[èéêë]", "e", "i") AS ?slug2)
-  # BIND(REPLACE(?slug2, "[ìíîï]", "i", "i") AS ?slug3)
-  # BIND(REPLACE(?slug3, "[òóôõöœø]", "o", "i") AS ?slug4)
-  # BIND(REPLACE(?slug4, "[ùúûü]", "u", "i") AS ?slug5)
-  # BIND(REPLACE(?slug5, "[ñ]", "n", "i") AS ?slug6)
-  # BIND(REPLACE(?slug6, "[ç]", "c", "i") AS ?slug7)
-  # BIND(REPLACE(?slug7, "[ß]", "s", "i") AS ?slug8)
-  # BIND(REPLACE(?slug8, "[ÌÍÎÏÈÉÊËÒÓÔÕÖŒÙÚÛÜÑÇ]", "", "i") AS ?slug9)
-  # BIND(REPLACE(?slug9, "[^a-z0-9]+", "-", "i") AS ?slug)
-  # BIND(REPLACE(?slug, "^-|-$", "", "i") AS ?slug)
-
-
 type Query {
   "Retrieve data about all organizations."
   organizations(
