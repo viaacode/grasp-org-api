@@ -29,18 +29,18 @@ CONSTRUCT {
   :sites ?site;                                  
   :posts ?post;  
 }
-FROM <https://data.hetarchief.be/graph/organizations>
-FROM <https://data.hetarchief.be/graph/organizations/schema>
+# FROM <https://data.hetarchief.be/graph/organizations>
+# FROM <https://data.hetarchief.be/graph/organizations/schema>
 WHERE
 {
   { 
     SELECT ?iri ?id 
     WHERE {
       ?iri a meemoo:ContentPartner; 
-          schema:identifier ?id .
+          org:identifier ?id .
 
       {{#if id}}
-      ?iri schema:identifier "{{id}}" .
+      ?iri org:identifier "{{id}}" .
       {{/if}}
 
       {{#if iri}}

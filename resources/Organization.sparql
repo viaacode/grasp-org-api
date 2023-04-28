@@ -30,8 +30,8 @@ CONSTRUCT {
   :posts ?post;  
   :category ?cat.
 }
-FROM <https://data.hetarchief.be/graph/organizations>
-FROM <https://data.hetarchief.be/graph/organizations/schema>
+# FROM <https://data.hetarchief.be/graph/organizations>
+# FROM <https://data.hetarchief.be/graph/organizations/schema>
 WHERE
 {
   { 
@@ -42,12 +42,12 @@ WHERE
       {{else}}
         ?iri a org:Organization .
       {{/if}}
-      ?iri schema:identifier ?id .
+      ?iri org:identifier ?id .
       # Only OR ids
       FILTER strStarts(?id, "OR-")
       
       {{#if id}}
-      ?iri schema:identifier "{{id}}" .
+      ?iri org:identifier "{{id}}" .
       {{/if}}
 
       {{#if iri}}
