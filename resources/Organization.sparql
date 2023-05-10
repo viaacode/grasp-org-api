@@ -32,8 +32,8 @@ CONSTRUCT {
   :posts ?post;  
   :category ?cat.
 }
-# FROM <https://data.hetarchief.be/graph/organizations>
-# FROM <https://data.hetarchief.be/graph/organizations/schema>
+FROM <https://data.hetarchief.be/graph/organizations>
+FROM <https://data.hetarchief.be/graph/organizations/schema>
 WHERE
 {
   { 
