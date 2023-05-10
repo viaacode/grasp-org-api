@@ -37,10 +37,10 @@ WHERE
     SELECT ?iri ?id 
     WHERE {
       ?iri a meemoo:ContentPartner; 
-          org:identifier ?id .
+          schema:identifier ?id .
 
       {{#if id}}
-      ?iri org:identifier "{{id}}" .
+      ?iri schema:identifier "{{id}}" .
       {{/if}}
 
       {{#if iri}}
