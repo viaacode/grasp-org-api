@@ -11,7 +11,7 @@ CONSTRUCT {
   :email ?email;
   :telephone ?telephone                            
 }
-# FROM <https://data.hetarchief.be/graph/organizations>
+FROM <https://data.hetarchief.be/graph/organizations>
 WHERE
 {
   { ?iri a schema:ContactPoint }

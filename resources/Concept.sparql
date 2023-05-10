@@ -9,8 +9,8 @@ CONSTRUCT {
   :broader ?broader;
   :narrower ?narrower                                              
 }
-# FROM <https://data.hetarchief.be/graph/organizations>
-# FROM <https://data.hetarchief.be/graph/organizations/schema>
+FROM <https://data.hetarchief.be/graph/organizations>
+FROM <https://data.hetarchief.be/graph/organizations/schema>
 WHERE
 {
   { ?iri a skos:Concept }

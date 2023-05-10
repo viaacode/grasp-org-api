@@ -30,11 +30,11 @@ CONSTRUCT {
   :posts ?post;
   :unit_of ?org
 }
-# FROM <https://data.hetarchief.be/graph/organizations>
-# FROM <https://data.hetarchief.be/graph/organizations/schema>
+FROM <https://data.hetarchief.be/graph/organizations>
+FROM <https://data.hetarchief.be/graph/organizations/schema>
 WHERE
 {
-  { ?iri a org:OrganizationalUnit; org:identifier ?id; org:unitOf ?org }
+  { ?iri a org:OrganizationalUnit; schema:identifier ?id; org:unitOf ?org }
   OPTIONAL { ?iri skos:prefLabel ?label }
   OPTIONAL { ?iri skos:altLabel ?alt_label }
   OPTIONAL { ?iri meemoo:mam_label ?mam_label }
