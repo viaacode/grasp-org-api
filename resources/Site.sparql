@@ -5,7 +5,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 CONSTRUCT {
   ?iri :iri ?iri; :address ?a .
 }
-FROM <https://data.hetarchief.be/graph/organizations>
+# FROM <https://data.hetarchief.be/graph/organizations>
 WHERE
 {
   { ?iri a org:Site }

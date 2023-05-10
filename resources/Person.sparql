@@ -16,7 +16,7 @@ CONSTRUCT {
   :holds ?post;
   :account_manager_of ?am                                            
 }
-FROM <https://data.hetarchief.be/graph/organizations>
+# FROM <https://data.hetarchief.be/graph/organizations>
 WHERE
 {
   { ?iri a schema:Person }
