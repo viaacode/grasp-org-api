@@ -10,7 +10,7 @@ services:
     environment:
       - RESOURCES_DIR=/grasp/resources
       - SERVICES_FILE=/grasp/services.json
-      - MAX_BATCH_SIZE=1000
+      - MAX_BATCH_SIZE=100
       - LOG_LEVEL=debug
       - CACHE_TTL=300000
       - CACHE_SIZE=200
