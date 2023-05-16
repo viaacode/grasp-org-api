@@ -2,7 +2,7 @@ PREFIX : <https://github.com/dbcls/grasp/ns/>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX meemoo: <https://data.hetarchief.be/ns/organization/>
+PREFIX haOrg: <https://data.hetarchief.be/ns/organization/>
 PREFIX schema: <https://schema.org/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
@@ -25,7 +25,7 @@ WHERE
   OPTIONAL { ?iri schema:familyName ?family_name }
   OPTIONAL { ?iri schema:email ?email }
   OPTIONAL { ?iri org:holds ?post }
-  OPTIONAL { ?iri meemoo:accountManagerOf ?am }
+  OPTIONAL { ?iri haOrg:accountManagerOf ?am }
   
   {{#if iri}}
   VALUES ?iri { {{join " " (as-iriref iri)}} }
