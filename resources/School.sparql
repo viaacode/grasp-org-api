@@ -34,10 +34,10 @@ FROM <https://data.hetarchief.be/graph/thesaurus/organizations-org_roles>
 WHERE
 {
   { 
-    SELECT ?iri ?id 
+    SELECT ?iri
     WHERE {
-      ?iri a haOrg:School; 
-          org:identifier ?id .
+      ?iri a org:Organization; 
+          haOrg:sector "Onderwijs"^^xsd:string.
       
       {{#if id}}
       ?iri org:identifier "{{id}}" .
@@ -55,6 +55,7 @@ WHERE
     LIMIT {{limit}}
     {{/if}}
   }
+  OPTIONAL { ?iri org:identifier ?id }
   OPTIONAL { ?iri skos:prefLabel ?label }
   OPTIONAL { ?iri skos:altLabel ?alt_label }
   OPTIONAL { ?iri mh:label ?mam_label }
