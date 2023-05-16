@@ -36,10 +36,10 @@ WHERE
     SELECT ?iri ?id 
     WHERE {
       ?iri a meemoo:School; 
-          schema:identifier ?id .
+          org:identifier ?id .
       
       {{#if id}}
-      ?iri schema:identifier "{{id}}" .
+      ?iri org:identifier "{{id}}" .
       {{/if}}
 
       {{#if iri}}
