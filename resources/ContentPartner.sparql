@@ -29,8 +29,9 @@ CONSTRUCT {
   :sites ?site;                                  
   :posts ?post;  
 }
-FROM <https://data.hetarchief.be/graph/organizations>
-FROM <https://data.hetarchief.be/graph/organizations/schema>
+FROM <https://data.hetarchief.be/graph/organization>
+FROM <https://data.hetarchief.be/graph/thesaurus/organizations-org_types>
+FROM <https://data.hetarchief.be/graph/thesaurus/organizations-org_roles>
 WHERE
 {
   { 

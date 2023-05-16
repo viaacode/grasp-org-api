@@ -17,7 +17,7 @@ CONSTRUCT {
   :postal_code ?postal_code;
   :street ?street                                   
 }
-FROM <https://data.hetarchief.be/graph/organizations>
+FROM <https://data.hetarchief.be/graph/organization>
 WHERE
 {
   { ?iri a schema:PostalAddress }
