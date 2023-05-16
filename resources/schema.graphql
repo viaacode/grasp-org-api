@@ -4,10 +4,9 @@ enum OrgType {
   ContentPartner
   ServiceProvider
   ServiceConsumer
-  School
   EducationalPartner
-  EducationalOrganization
-  EducationalPublisher
+  DigitizationPartner
+  ProjectPartner
 }
 
 type Query {
