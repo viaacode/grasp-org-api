@@ -9,6 +9,16 @@ enum OrgType {
   ProjectPartner
 }
 
+enum Sector {
+  Onderwijs	
+  Cultuur
+  Overheid
+  Regionale_Omroep
+  Landelijke_Private_Omroep
+  Leverancier
+  Publieke_Omroep
+}
+
 type Query {
   "Retrieve data about all organizations."
   organizations(
@@ -23,7 +33,9 @@ type Query {
     "A simple search by organization label."
     label: String,
     "Only return a specific type of organization. The results also include instances of subtypes."
-    type: OrgType
+    type: OrgType,
+    "Only return organizations in a specific sector."
+    sector: Sector
   ): [Organization]
   "Retrieve data about schools known to meemoo."
   schools(
