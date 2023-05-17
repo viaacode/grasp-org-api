@@ -46,6 +46,12 @@ WHERE
       {{else}}
         ?iri a org:Organization .
       {{/if}}
+
+      ?iri org:identifier ?id .
+      # Only OR ids
+      FILTER strStarts(?id, "OR-")
+
+      FILTER NOT EXISTS { ?iri a org:OrganizationalUnit }
       
       {{#if id}}
       ?iri org:identifier "{{id}}" .
@@ -74,7 +80,6 @@ WHERE
     LIMIT {{limit}}
     {{/if}}
   }
-  OPTIONAL { ?iri org:identifier ?id }
   OPTIONAL { ?iri skos:prefLabel ?label }
   OPTIONAL { ?iri skos:altLabel ?alt_label }
   OPTIONAL { ?iri mh:label ?mam_label }

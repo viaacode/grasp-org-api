@@ -6,6 +6,7 @@ PREFIX haOrg: <https://data.hetarchief.be/ns/organization/>
 PREFIX schema: <https://schema.org/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX mh:  <https://data.hetarchief.be/ns/mediahaven/> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 CONSTRUCT {
   ?iri :iri   ?iri;
@@ -37,7 +38,9 @@ WHERE
     SELECT ?iri
     WHERE {
       ?iri a org:Organization; 
-          haOrg:sector "Onderwijs"^^xsd:string.
+          haOrg:sector "Onderwijs" .
+
+      FILTER NOT EXISTS { ?iri a org:OrganizationalUnit }
       
       {{#if id}}
       ?iri org:identifier "{{id}}" .
