@@ -64,7 +64,7 @@ WHERE
   OPTIONAL { ?iri mh:label ?mam_label }
   OPTIONAL { ?iri foaf:homepage ?homepage }
   OPTIONAL { ?iri dcterms:description ?description }
-  OPTIONAL { ?iri schema:logo ?logo }
+  OPTIONAL { ?iri haOrg:hasLogo ?logo }
   OPTIONAL { ?iri haOrg:allowsOverlay ?overlay }
   OPTIONAL { ?iri haOrg:allowsBZT ?bzt }
   OPTIONAL { ?iri haOrg:requestForm ?form_url } 

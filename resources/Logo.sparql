@@ -11,7 +11,7 @@ CONSTRUCT {
 FROM <https://data.hetarchief.be/graph/organization>
 WHERE
 {
-  { ?x schema:logo ?iri }
+  { ?iri a haOrg:Logo }
   OPTIONAL { ?iri haOrg:applicationContext ?concept }
   OPTIONAL { ?iri skos:prefLabel ?label }
   OPTIONAL { ?iri skos:altLabel ?alt_label }
