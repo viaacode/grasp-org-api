@@ -35,7 +35,8 @@ FROM <https://data.hetarchief.be/graph/thesaurus/organizations-org_types>
 FROM <https://data.hetarchief.be/graph/thesaurus/organizations-org_roles>
 WHERE
 {
-  { ?iri a org:OrganizationalUnit; org:identifier ?id; org:unitOf ?org }
+  { ?iri a org:OrganizationalUnit; org:unitOf ?org }
+  OPTIONAL { ?iri org:identifier ?id }
   OPTIONAL { ?iri skos:prefLabel ?label }
   OPTIONAL { ?iri skos:altLabel ?alt_label }
   OPTIONAL { ?iri haOrg:mam_label ?mam_label }
