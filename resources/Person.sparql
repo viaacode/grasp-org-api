@@ -19,19 +19,35 @@ CONSTRUCT {
 FROM <https://data.hetarchief.be/graph/organization>
 WHERE
 {
-  { ?iri a schema:Person }
+  { 
+    SELECT ?iri
+    WHERE {
+      ?iri a schema:Person .
+
+      {{#if iri}}
+      VALUES ?iri { {{join " " (as-iriref iri)}} }
+      {{/if}}
+
+      {{#if given_name}}
+        ?iri schema:givenName "{{given_name}}" .
+      {{/if}}
+      
+      {{#if family_name}}
+        ?iri schema:familyName "{{family_name}}" .
+      {{/if}}
+    }
+    {{#if offset includeZero=true}}
+    ORDER BY ASC(?iri)
+    OFFSET {{offset}}
+    {{/if}}
+    {{#if limit includeZero=true}}
+    LIMIT {{limit}}
+    {{/if}}
+  }
   OPTIONAL { ?iri schema:telephone ?telephone }
   OPTIONAL { ?iri schema:givenName ?given_name }
   OPTIONAL { ?iri schema:familyName ?family_name }
   OPTIONAL { ?iri schema:email ?email }
   OPTIONAL { ?iri org:holds ?post }
-  OPTIONAL { ?iri haOrg:accountManagerOf ?am }
-  
-  {{#if iri}}
-  VALUES ?iri { {{join " " (as-iriref iri)}} }
-  {{/if}}
-
-  {{#if given_name}}
-    ?iri schema:givenName "{{given_name}}" .
-  {{/if}}
+  OPTIONAL { ?iri haOrg:isAccountManagerOf ?am }
 }
