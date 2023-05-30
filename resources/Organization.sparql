@@ -2,12 +2,13 @@ PREFIX : <https://github.com/dbcls/grasp/ns/>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX meemoo: <https://data.hetarchief.be/ns/organization/>
+PREFIX haOrg: <https://data.hetarchief.be/ns/organization/>
 PREFIX schema: <https://schema.org/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX mh:  <https://data.hetarchief.be/ns/mediahaven/> 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 CONSTRUCT {
   ?iri :iri   ?iri;
@@ -32,24 +33,33 @@ CONSTRUCT {
   :posts ?post;  
   :category ?cat.
 }
-FROM <https://data.hetarchief.be/graph/organizations>
-FROM <https://data.hetarchief.be/graph/organizations/schema>
+FROM <https://data.hetarchief.be/graph/organization>
+FROM <https://data.hetarchief.be/graph/thesaurus/organizations-org_types>
+FROM <https://data.hetarchief.be/graph/thesaurus/organizations-org_roles>
 WHERE
 {
   { 
     SELECT ?iri ?id 
     WHERE {
       {{#if type}}
-        ?iri rdf:type/rdfs:subClassOf* meemoo:{{type}} .
+        ?iri rdf:type/rdfs:subClassOf* haOrg:{{type}} .
       {{else}}
         ?iri a org:Organization .
       {{/if}}
-      ?iri schema:identifier ?id .
+
+      ?iri org:identifier ?id .
       # Only OR ids
       FILTER strStarts(?id, "OR-")
+
+      FILTER NOT EXISTS { ?iri a org:OrganizationalUnit }
       
       {{#if id}}
-      ?iri schema:identifier "{{id}}" .
+      ?iri org:identifier "{{id}}" .
+      {{/if}}
+
+      {{#if sector}}
+        BIND(REPLACE("{{sector}}","_"," ") AS ?sec)
+        ?iri haOrg:sector ?sec .
       {{/if}}
 
       {{#if iri}}
@@ -75,12 +85,12 @@ WHERE
   OPTIONAL { ?iri mh:label ?mam_label }
   OPTIONAL { ?iri foaf:homepage ?homepage }
   OPTIONAL { ?iri dcterms:description ?description }
-  OPTIONAL { ?iri schema:logo ?logo }
-  OPTIONAL { ?iri meemoo:allowsOverlay ?overlay }
-  OPTIONAL { ?iri meemoo:allowsBZT ?bzt }
-  OPTIONAL { ?iri meemoo:requestForm ?form_url } 
-  OPTIONAL { ?iri meemoo:sector ?sector } 
-  OPTIONAL { ?iri meemoo:hasAccountManager ?account_manager }
+  OPTIONAL { ?iri haOrg:hasLogo ?logo }
+  OPTIONAL { ?iri haOrg:allowsOverlay ?overlay }
+  OPTIONAL { ?iri haOrg:allowsBZT ?bzt }
+  OPTIONAL { ?iri haOrg:requestForm ?form_url } 
+  OPTIONAL { ?iri haOrg:sector ?sector } 
+  OPTIONAL { ?iri haOrg:hasAccountManager ?account_manager }
   OPTIONAL { ?iri org:classification ?classification }
   OPTIONAL { ?iri org:hasUnit ?unit }
   OPTIONAL { ?iri schema:contactPoint ?contact_point }
@@ -93,9 +103,9 @@ WHERE
   
   # add category
   BIND (
-    IF(EXISTS { ?iri a meemoo:ContentPartner }, "Content Partner", 
-      IF(EXISTS { ?iri a meemoo:ServiceProvider }, "Service Provider", 
-      IF(EXISTS { ?iri a meemoo:ServiceConsumer }, "Customer", ?x)
+    IF(EXISTS { ?iri a haOrg:ContentPartner }, "Content Partner", 
+      IF(EXISTS { ?iri a haOrg:ServiceProvider }, "Service Provider", 
+      IF(EXISTS { ?iri a haOrg:ServiceConsumer }, "Customer", ?x)
     )) AS ?cat)
 
   # create slug

@@ -1,18 +1,18 @@
 PREFIX : <https://github.com/dbcls/grasp/ns/>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX meemoo: <https://data.hetarchief.be/ns/organization/>
+PREFIX haOrg: <https://data.hetarchief.be/ns/organization/>
 PREFIX schema: <https://schema.org/>
 
 CONSTRUCT {
   ?iri :iri   ?iri;
   :type ?concept                                        
 }
-FROM <https://data.hetarchief.be/graph/organizations>
+FROM <https://data.hetarchief.be/graph/organization>
 WHERE
 {
-  { ?x schema:logo ?iri }
-  OPTIONAL { ?iri meemoo:applicationContext ?concept }
+  { ?iri a haOrg:Logo }
+  OPTIONAL { ?iri haOrg:applicationContext ?concept }
   OPTIONAL { ?iri skos:prefLabel ?label }
   OPTIONAL { ?iri skos:altLabel ?alt_label }
   

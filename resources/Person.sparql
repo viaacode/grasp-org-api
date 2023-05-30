@@ -2,7 +2,7 @@ PREFIX : <https://github.com/dbcls/grasp/ns/>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX meemoo: <https://data.hetarchief.be/ns/organization/>
+PREFIX haOrg: <https://data.hetarchief.be/ns/organization/>
 PREFIX schema: <https://schema.org/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
@@ -16,22 +16,38 @@ CONSTRUCT {
   :holds ?post;
   :account_manager_of ?am                                            
 }
-FROM <https://data.hetarchief.be/graph/organizations>
+FROM <https://data.hetarchief.be/graph/organization>
 WHERE
 {
-  { ?iri a schema:Person }
+  { 
+    SELECT ?iri
+    WHERE {
+      ?iri a schema:Person .
+
+      {{#if iri}}
+      VALUES ?iri { {{join " " (as-iriref iri)}} }
+      {{/if}}
+
+      {{#if given_name}}
+        ?iri schema:givenName "{{given_name}}" .
+      {{/if}}
+      
+      {{#if family_name}}
+        ?iri schema:familyName "{{family_name}}" .
+      {{/if}}
+    }
+    {{#if offset includeZero=true}}
+    ORDER BY ASC(?iri)
+    OFFSET {{offset}}
+    {{/if}}
+    {{#if limit includeZero=true}}
+    LIMIT {{limit}}
+    {{/if}}
+  }
   OPTIONAL { ?iri schema:telephone ?telephone }
   OPTIONAL { ?iri schema:givenName ?given_name }
   OPTIONAL { ?iri schema:familyName ?family_name }
   OPTIONAL { ?iri schema:email ?email }
   OPTIONAL { ?iri org:holds ?post }
-  OPTIONAL { ?iri meemoo:accountManagerOf ?am }
-  
-  {{#if iri}}
-  VALUES ?iri { {{join " " (as-iriref iri)}} }
-  {{/if}}
-
-  {{#if given_name}}
-    ?iri schema:givenName "{{given_name}}" .
-  {{/if}}
+  OPTIONAL { ?iri haOrg:isAccountManagerOf ?am }
 }

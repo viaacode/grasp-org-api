@@ -2,7 +2,7 @@ PREFIX : <https://github.com/dbcls/grasp/ns/>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX meemoo: <https://data.hetarchief.be/ns/organization/>
+PREFIX haOrg: <https://data.hetarchief.be/ns/organization/>
 PREFIX schema: <https://schema.org/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX mh:  <https://data.hetarchief.be/ns/mediahaven/> 
@@ -29,18 +29,19 @@ CONSTRUCT {
   :sites ?site;                                  
   :posts ?post;  
 }
-FROM <https://data.hetarchief.be/graph/organizations>
-FROM <https://data.hetarchief.be/graph/organizations/schema>
+FROM <https://data.hetarchief.be/graph/organization>
+FROM <https://data.hetarchief.be/graph/thesaurus/organizations-org_types>
+FROM <https://data.hetarchief.be/graph/thesaurus/organizations-org_roles>
 WHERE
 {
   { 
     SELECT ?iri ?id 
     WHERE {
-      ?iri a meemoo:ContentPartner; 
-          schema:identifier ?id .
+      ?iri a haOrg:ContentPartner; 
+          org:identifier ?id .
 
       {{#if id}}
-      ?iri schema:identifier "{{id}}" .
+      ?iri org:identifier "{{id}}" .
       {{/if}}
 
       {{#if iri}}
@@ -60,12 +61,12 @@ WHERE
   OPTIONAL { ?iri mh:label ?mam_label }
   OPTIONAL { ?iri foaf:homepage ?homepage }
   OPTIONAL { ?iri dcterms:description ?description }
-  OPTIONAL { ?iri schema:logo ?logo }
-  OPTIONAL { ?iri meemoo:allowsOverlay ?overlay }
-  OPTIONAL { ?iri meemoo:allowsBZT ?bzt }
-  OPTIONAL { ?iri meemoo:requestForm ?form_url } 
-  OPTIONAL { ?iri meemoo:sector ?sector } 
-  OPTIONAL { ?iri meemoo:hasAccountManager ?account_manager }
+  OPTIONAL { ?iri haOrg:hasLogo ?logo }
+  OPTIONAL { ?iri haOrg:allowsOverlay ?overlay }
+  OPTIONAL { ?iri haOrg:allowsBZT ?bzt }
+  OPTIONAL { ?iri haOrg:requestForm ?form_url } 
+  OPTIONAL { ?iri haOrg:sector ?sector } 
+  OPTIONAL { ?iri haOrg:hasAccountManager ?account_manager }
   OPTIONAL { ?iri org:classification ?classification }
   OPTIONAL { ?iri org:hasUnit ?unit }
   OPTIONAL { ?iri schema:contactPoint ?contact_point }

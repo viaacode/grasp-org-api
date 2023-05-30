@@ -2,7 +2,7 @@ PREFIX : <https://github.com/dbcls/grasp/ns/>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX meemoo: <https://data.hetarchief.be/ns/organization/>
+PREFIX haOrg: <https://data.hetarchief.be/ns/organization/>
 PREFIX schema: <https://schema.org/>
 
 CONSTRUCT {
@@ -11,7 +11,7 @@ CONSTRUCT {
   :email ?email;
   :telephone ?telephone                            
 }
-FROM <https://data.hetarchief.be/graph/organizations>
+FROM <https://data.hetarchief.be/graph/organization>
 WHERE
 {
   { ?iri a schema:ContactPoint }
