@@ -18,8 +18,14 @@ WHERE
   UNION
   { ?iri a org:Role }
   
-  OPTIONAL { ?iri skos:prefLabel ?label .}
-  OPTIONAL { ?iri skos:altLabel ?alt_label }
+  OPTIONAL { 
+    ?iri skos:prefLabel ?label .
+    FILTER (langmatches(lang(?label), "nl"))
+  }
+  OPTIONAL { 
+    ?iri skos:altLabel ?alt_label .
+    FILTER (langmatches(lang(?label), "nl"))
+  }
   OPTIONAL { ?iri skos:broader ?broader }
   OPTIONAL { ?iri skos:narrower ?narrower }
   
