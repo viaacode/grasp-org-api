@@ -45,7 +45,7 @@ WHERE
       {{/if}}
 
       {{#if iri}}
-      VALUES ?iri { {{join " " (as-iriref iri)}} }
+      VALUES ?iri { {{join (as-iriref iri) " "}} }
       {{/if}}
     }
     {{#if offset includeZero=true}}

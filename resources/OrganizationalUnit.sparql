@@ -74,6 +74,6 @@ WHERE
   "^-|-$", "", "i") AS ?slug)
 
   {{#if iri}}
-  VALUES ?iri { {{join " " (as-iriref iri)}} }
+  VALUES ?iri { {{join (as-iriref iri) " "}} }
   {{/if}}
 }

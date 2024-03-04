@@ -17,6 +17,6 @@ WHERE
   OPTIONAL { ?iri skos:altLabel ?alt_label }
   
   {{#if iri}}
-  VALUES ?iri { {{join " " (as-iriref iri)}} }
+  VALUES ?iri { {{join (as-iriref iri) " "}} }
   {{/if}}
 }

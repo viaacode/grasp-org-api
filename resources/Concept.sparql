@@ -30,6 +30,6 @@ WHERE
   OPTIONAL { ?iri skos:narrower ?narrower }
   
   {{#if iri}}
-  VALUES ?iri { {{join " " (as-iriref iri)}} }
+  VALUES ?iri { {{join (as-iriref iri) " "}} }
   {{/if}}
 }

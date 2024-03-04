@@ -12,6 +12,6 @@ WHERE
   OPTIONAL { ?iri org:siteAddress ?a }
 
   {{#if iri}}
-  VALUES ?iri { {{join " " (as-iriref iri)}} }
+  VALUES ?iri { {{join (as-iriref iri) " "}} }
   {{/if}}
 }

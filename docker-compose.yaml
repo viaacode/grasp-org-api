@@ -5,7 +5,8 @@ networks:
     driver: bridge
 services:
   grasp:
-    build: https://github.com/viaacode/grasp.git#main
+    #build: https://github.com/viaacode/grasp.git#main
+    build: ../grasp
     image: grasp-latest
     environment:
       - RESOURCES_DIR=/grasp/resources
