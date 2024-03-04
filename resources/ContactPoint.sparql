@@ -20,6 +20,6 @@ WHERE
   OPTIONAL { ?iri schema:telephone ?telephone }
   
   {{#if iri}}
-  VALUES ?iri { {{join " " (as-iriref iri)}} }
+  VALUES ?iri { {{join (as-iriref iri) " "}} }
   {{/if}}
 }

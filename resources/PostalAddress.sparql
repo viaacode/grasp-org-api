@@ -32,6 +32,6 @@ WHERE
   OPTIONAL { ?iri schema:streetAddress ?street }
   
   {{#if iri}}
-  VALUES ?iri { {{join " " (as-iriref iri)}} }
+  VALUES ?iri { {{join (as-iriref iri) " "}} }
   {{/if}}
 }

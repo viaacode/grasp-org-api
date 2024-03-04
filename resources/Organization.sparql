@@ -63,7 +63,7 @@ WHERE
       {{/if}}
 
       {{#if iri}}
-      VALUES ?iri { {{join " " (as-iriref iri)}} }
+      VALUES ?iri { {{join (as-iriref iri) " "}} }
       {{/if}}
 
       # label filter
