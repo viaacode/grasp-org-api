@@ -63,8 +63,6 @@ WHERE
   OPTIONAL { ?iri foaf:homepage ?homepage }
   OPTIONAL { ?iri dcterms:description ?description }
   OPTIONAL { ?iri haOrg:hasLogo ?logo }
-  OPTIONAL { ?iri haOrg:allowsOverlay ?overlay }
-  OPTIONAL { ?iri haOrg:allowsBZT ?bzt }
   OPTIONAL { ?iri haOrg:requestForm ?form_url } 
   OPTIONAL { ?iri haOrg:sector ?sector } 
   OPTIONAL { ?iri haOrg:hasAccountManager ?account_manager }
