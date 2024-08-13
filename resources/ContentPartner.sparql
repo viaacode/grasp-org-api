@@ -3,9 +3,11 @@ PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX haOrg: <https://data.hetarchief.be/ns/organization/>
+PREFIX haPref: <https://data.hetarchief.be/id/organization-preferences/>
 PREFIX schema: <https://schema.org/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX mh:  <https://data.hetarchief.be/ns/mediahaven/> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 CONSTRUCT {
   ?iri :iri   ?iri;
@@ -62,8 +64,6 @@ WHERE
   OPTIONAL { ?iri foaf:homepage ?homepage }
   OPTIONAL { ?iri dcterms:description ?description }
   OPTIONAL { ?iri haOrg:hasLogo ?logo }
-  OPTIONAL { ?iri haOrg:allowsOverlay ?overlay }
-  OPTIONAL { ?iri haOrg:allowsBZT ?bzt }
   OPTIONAL { ?iri haOrg:requestForm ?form_url } 
   OPTIONAL { ?iri haOrg:sector ?sector } 
   OPTIONAL { ?iri haOrg:hasAccountManager ?account_manager }
@@ -76,6 +76,10 @@ WHERE
 
   # fix form_url
   BIND (REPLACE(?form_url,"\\\\_","_") AS ?fixed_form_url)
+
+  # add preferences re. services
+  BIND (EXISTS { ?iri haOrg:hasPreference haPref:logo-embedding } AS ?overlay)
+  BIND (EXISTS { ?iri haOrg:hasPreference haPref:visitor-space-publication } AS ?bzt)
 
   # create slug
   BIND(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
