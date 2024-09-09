@@ -76,9 +76,15 @@ WHERE
     ORDER BY ASC(?iri)
     OFFSET {{offset}}
     {{/if}}
+    {{#gt limit 1000}}
+    LIMIT 1000
+    {{else}}
     {{#if limit includeZero=true}}
     LIMIT {{limit}}
+    {{else}}
+    LIMIT 1000
     {{/if}}
+    {{/gt}}
   }
   OPTIONAL { ?iri skos:prefLabel ?label }
   OPTIONAL { ?iri skos:altLabel ?alt_label }
@@ -105,7 +111,7 @@ WHERE
   BIND (
     IF(EXISTS { ?iri a haOrg:ContentPartner }, "Content Partner", 
       IF(EXISTS { ?iri a haOrg:ServiceProvider }, "Service Provider", 
-      IF(EXISTS { ?iri a haOrg:ServiceConsumer }, "Customer", ?x)
+      IF(EXISTS { ?iri a haOrg:ServiceConsumer }, "Customer", "Other")
     )) AS ?cat)
 
   # create slug
