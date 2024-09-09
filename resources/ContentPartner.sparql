@@ -21,6 +21,7 @@ CONSTRUCT {
   :logo         ?logo;                                   
   :overlay      ?overlay;
   :bzt      ?bzt;     
+  :iiif      ?iiif;
   :form_url      ?fixed_form_url;                                  
   :account_manager ?account_manager;                         
   :classification   ?classification;
@@ -80,6 +81,8 @@ WHERE
   # add preferences re. services
   BIND (EXISTS { ?iri haOrg:hasPreference haPref:logo-embedding } AS ?overlay)
   BIND (EXISTS { ?iri haOrg:hasPreference haPref:visitor-space-publication } AS ?bzt)
+  BIND (EXISTS { ?iri haOrg:hasPreference haPref:iiif-dissemination } AS ?iiif)
+
 
   # create slug
   BIND(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(

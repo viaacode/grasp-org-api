@@ -99,6 +99,8 @@ interface IOrganization {
   overlay: Boolean
   "A flag indicating whether the organization allows content to be included in meemoo's Bezoekertool."
   bzt: Boolean
+  "A flag indicating whether the organization allows content to be included in meemoo's IIIF service."
+  iiif: Boolean
   "The URL to a request content from the organization."
   form_url: String
   "The sector the organization in active in."
@@ -144,6 +146,8 @@ type Organization implements IOrganization
   overlay: Boolean
   "A flag indicating whether the organization allows content to be included in meemoo's Bezoekertool."
   bzt: Boolean
+  "A flag indicating whether the organization allows content to be included in meemoo's IIIF service."
+  iiif: Boolean
   "The URL to a request content from the organization."
   form_url: String
   "The sector the organization in active in."
@@ -191,6 +195,8 @@ type School implements IOrganization
   overlay: Boolean
   "A flag indicating whether the school allows content to be included in meemoo's Bezoekertool."
   bzt: Boolean
+  "A flag indicating whether the organization allows content to be included in meemoo's IIIF service."
+  iiif: Boolean
   "The URL to a request content from the school."
   form_url: String
   "The sector the school in active in."
@@ -236,6 +242,8 @@ type ContentPartner implements IOrganization
   overlay: Boolean
   "A flag indicating whether the content partner allows content to be included in meemoo's Bezoekertool."
   bzt: Boolean
+  "A flag indicating whether the organization allows content to be included in meemoo's IIIF service."
+  iiif: Boolean
   "The URL to a request content from the content partner."
   form_url: String
   "The sector the content partner in active in."
@@ -281,6 +289,8 @@ type OrganizationalUnit implements IOrganization
   overlay: Boolean
   "A flag indicating whether the unit allows content to be included in meemoo's Bezoekertool."
   bzt: Boolean
+  "A flag indicating whether the organization allows content to be included in meemoo's IIIF service."
+  iiif: Boolean
   "The URL to a request content from the unit."
   form_url: String
   "The sector the unit in active in."
