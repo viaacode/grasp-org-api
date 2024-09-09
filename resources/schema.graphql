@@ -7,6 +7,7 @@ enum OrgType {
   EducationalPartner
   DigitizationPartner
   ProjectPartner
+  Other
 }
 
 enum Sector {
@@ -28,7 +29,7 @@ type Query {
     id: String,
     "The specified number of results after which it should start generating results."
     offset: Int,
-    "The upper bound on the number of solutions returned."
+    "The upper bound on the number of solutions returned. The query never returns more than 1000 results. "
     limit: Int,
     "A simple search by organization label."
     label: String,
