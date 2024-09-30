@@ -36,6 +36,7 @@ CONSTRUCT {
   :category ?cat.
 }
 FROM <https://data.hetarchief.be/graph/organization>
+FROM <https://data.hetarchief.be/graph/organization-preferences>
 FROM <https://data.hetarchief.be/graph/thesaurus/organizations-org_types>
 FROM <https://data.hetarchief.be/graph/thesaurus/organizations-org_roles>
 WHERE

@@ -1,17 +1,14 @@
-version: "3.9"
-
 networks:
   sparql:
     driver: bridge
 services:
   grasp:
-    build: https://github.com/viaacode/grasp.git#main
-    image: grasp-latest
+    build: /Users/mielvandersande/Meemoo/Development/grasp/grasp
     environment:
       - RESOURCES_DIR=/grasp/resources
       - SERVICES_FILE=/grasp/services.json
       - MAX_BATCH_SIZE=100
-      - LOG_LEVEL=debug
+      - LOG_LEVEL=info
       - CACHE_TTL=300000
       - CACHE_SIZE=200
     ports:
