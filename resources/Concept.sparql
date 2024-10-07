@@ -10,8 +10,7 @@ CONSTRUCT {
   :narrower ?narrower                                              
 }
 FROM <https://data.hetarchief.be/graph/organization>
-FROM <https://data.hetarchief.be/graph/thesaurus/organizations-org_types>
-FROM <https://data.hetarchief.be/graph/thesaurus/organizations-org_roles>
+FROM <https://data.hetarchief.be/graph/thesauri>
 WHERE
 {
   { ?iri a skos:Concept }
