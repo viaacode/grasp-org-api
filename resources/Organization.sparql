@@ -38,6 +38,7 @@ CONSTRUCT {
 FROM <https://data.hetarchief.be/graph/organization>
 FROM <https://data.hetarchief.be/graph/organization-preferences>
 FROM <https://data.hetarchief.be/graph/thesauri>
+FROM <https://data.hetarchief.be/graph/organization-static-bavo>
 WHERE
 {
   { 
