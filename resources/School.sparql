@@ -56,9 +56,15 @@ WHERE
     ORDER BY ASC(?iri)
     OFFSET {{offset}}
     {{/if}}
+    {{#gt limit 500}}
+    LIMIT 500
+    {{else}}
     {{#if limit includeZero=true}}
     LIMIT {{limit}}
+    {{else}}
+    LIMIT 500
     {{/if}}
+    {{/gt}}
   }
   OPTIONAL { ?iri org:identifier ?id }
   OPTIONAL { ?iri skos:prefLabel ?label }

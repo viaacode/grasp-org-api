@@ -79,13 +79,13 @@ WHERE
     ORDER BY ASC(?iri)
     OFFSET {{offset}}
     {{/if}}
-    {{#gt limit 1000}}
-    LIMIT 1000
+    {{#gt limit 500}}
+    LIMIT 500
     {{else}}
     {{#if limit includeZero=true}}
     LIMIT {{limit}}
     {{else}}
-    LIMIT 1000
+    LIMIT 500
     {{/if}}
     {{/gt}}
   }
