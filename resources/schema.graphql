@@ -21,7 +21,7 @@ enum Sector {
 }
 
 type Query {
-  "Retrieve data about all organizations."
+  "Retrieve data about all organizations in a paginated manner. By default, the query never returns more than 500 results. Offset should be used to get more results."
   organizations(
     "The persistent meemoo URI of the organization."
     iri: String, 
@@ -29,7 +29,7 @@ type Query {
     id: String,
     "The specified number of results after which it should start generating results."
     offset: Int,
-    "The upper bound on the number of solutions returned. The query never returns more than 1000 results. "
+    "The upper bound on the number of solutions returned. The query never returns more than 500 results, even if limit is set to a higher number."
     limit: Int,
     "A simple search by organization label."
     label: String,
